@@ -14,7 +14,9 @@ function toliausiaiPerYvalandu(x, y) {
     }
     posibleCities.sort((a, b) => a.distance - b.distance);
   }
-  return posibleCities[posibleCities.length - 1];
+  return `Važiuodami ${x} km/h greičiu ${y} valandų mes toliausiai nuvažiuotume iki miesto ${
+    posibleCities[posibleCities.length - 1].name
+  }`;
 }
 console.log("\n       Kur toliausiai");
 console.log(toliausiaiPerYvalandu(100, 1.2));
@@ -32,7 +34,7 @@ function arSpesi(city, h) {
   if (speedToCity <= 120) {
     return `Jei važiuotume ${speedToCity} km/h, ${city} pasiektume per ${h} h.`;
   } else {
-    return `Nespėtume, greičio limitas 120km/h`;
+    return `${city} pasiekti per ${h} h. nespėtume, greičio limitas 120km/h`;
   }
 }
 
@@ -54,7 +56,9 @@ function toliausiaiUzPinigus(pinigu, kaina, vartoja) {
     }
     posibleCities1.sort((a, b) => a.distance - b.distance);
   }
-  return posibleCities1[posibleCities1.length - 1];
+  return `Su turimu kuru ir pinigais tolimiausias pasiekimas miestas: ${
+    posibleCities1[posibleCities1.length - 1].name
+  }`;
 }
 
 console.log("\n      Kuras už pinigus, kur toliausia?");
@@ -65,6 +69,37 @@ d. Susikurkite sąrašą kelio sąlygoms iki kiekvieno miesto apibūdinti (pavyz
 Užduotį gaima padaryti ir su objektais. Tuomet galite nekurti sąrašų
 */
 
-function kelioSalygos(greitis) {}
+function kelioSalygos(greitis) {
+  for (let i = 0; i < miestai.length; i++) {
+    if (miestai[i].road === "geras") {
+      console.log(
+        `${miestai[i].name} pasieksime per ${(
+          miestai[i].distance / greitis
+        ).toFixed(2)} h., nes kelias geras`
+      );
+    }
+    if (miestai[i].road === "prastas") {
+      console.log(
+        `${miestai[i].name} pasieksime per ${(
+          (miestai[i].distance / greitis) *
+          1.5
+        ).toFixed(2)} h., dėl prasto kelio.`
+      );
+    }
+    if (miestai[i].road === "taisomas") {
+      console.log(
+        `${miestai[i].name} pasieksime per ${(
+          (miestai[i].distance / greitis) *
+          2
+        ).toFixed(2)} h., dėl taisomo kelio`
+      );
+    }
+  }
+  return "";
+}
+
+// laikas = atstumas / greitis
+// return laikas * kelio koef
 
 console.log("\n      Kelio sąlygos, kiek užtruksime");
+console.log(kelioSalygos(90));

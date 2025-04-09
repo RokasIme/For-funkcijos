@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "miestai.js",
   "scripts": {
+    "skaiciai": "node --watch skaiciai.js",
     "miestai": "node --watch miestai.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

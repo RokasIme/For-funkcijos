@@ -32,7 +32,7 @@ export const miestai = [
   {
     name: "Mažeikiai",
     distance: 299,
-    road: "geras",
+    road: "prastas",
   },
   {
     name: "Rokiškis",
